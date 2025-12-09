@@ -1,11 +1,26 @@
-import Link from "next/link";
-import { cookies } from "next/headers";
-import { logoutAction } from "@/actions/logoutAction";
+"use client";
 
-export async function Header() {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token");
-    const estaLogado = !!token;
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+export default function Header() {
+    const [estaLogado, setEstaLogado] = useState(false);
+
+    useEffect(() => {
+        const temToken = document.cookie
+        .split("; ")
+        .find(row => row.startsWith("token="));
+        
+        setEstaLogado(!!temToken);
+    }, []);
+
+    function logout() {
+        document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax;";
+
+        setEstaLogado(false);
+
+        window.location.href = "/login";
+    }
 
     return (
         <header className="bg-zinc-900 text-white fixed top-0 left-0 w-full z-50 shadow-md">
@@ -18,7 +33,6 @@ export async function Header() {
                         {estaLogado && (
                             <>
                                 <li><Link href="/">Home</Link></li>
-                                {/* <li><Link href="/usuarios">Usuários</Link></li> */}
                                 <li><Link href="/feed">Feed</Link></li>
                                 <li><Link href="/blog">Minhas Postagens</Link></li>
                             </>
@@ -26,14 +40,12 @@ export async function Header() {
 
                         {estaLogado && (
                             <li>
-                                <form action={logoutAction}>
-                                    <button 
-                                        type="submit" 
-                                        className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded"
-                                    >
-                                        Sair
-                                    </button>
-                                </form>
+                                <button
+                                    onClick={logout}
+                                    className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded"
+                                >
+                                    Sair
+                                </button>
                             </li>
                         )}
                     </ul>

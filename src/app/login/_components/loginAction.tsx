@@ -21,7 +21,6 @@ export async function loginAction(formData: FormData) {
   
   
   if (!response.ok) {
-    console.log('renato, ');
     return { error: data };
   }
 
