@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  nextjs:
+    build: .
+    container_name: next-app
+    ports:
+      - '3000:3000'   
+    volumes:
+      - .:/app        
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8888/api
+      - API_URL=http://localhost:8888/api
+    networks:
+      - dev
+    command: npm run dev
+networks:
+  dev:
+    external: true   # conecta à rede já criada para a API

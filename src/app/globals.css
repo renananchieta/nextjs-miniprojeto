@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 14px; 
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.input {
+  @apply bg-zinc-200 rounded-md px-3 py-2;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.botao {
+  @apply flex justify-center items-center gap-2;
+  @apply px-6 py-2.5 rounded-md;
+}
+
+.botao.azul {
+  @apply bg-blue-500 hover:bg-blue-600 text-white;
+}
+
+.botao.vermelho {
+  @apply bg-red-500 hover:bg-red-600 text-white;
+}
+
+.botao.cinza {
+  @apply bg-zinc-500 hover:bg-zinc-600 text-white;
+}
+
+.botao.verde {
+  @apply bg-green-500 hover:bg-green-600 text-white;
 }
