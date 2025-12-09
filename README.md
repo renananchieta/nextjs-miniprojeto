@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MINI PROJETO EM NEXT JS
+Mini projeto com finalidades de apresentar conhecimentos básicos em Next JS, com cadastro e autenticação de usuário e CRUD completo de postagens. 
 
-## Getting Started
+### REQUISITOS
+Para instalar o projeto local e rodar localmente na sua máquina é necessário os seguintes requisitos:
 
-First, run the development server:
+```sh
+ -  Node.js versão 22.12.0 ou superior
+```
+[Guia de instalação do Node.js](https://nodejs.org/en/download)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### INSTALAÇÃO DO PROJETO
+Para instalar o projeto siga as etapas:
+
+1. Clonar o projeto do GitLab (em qualquer diretório do seu computador. recomendado criar um diretório em Documentos/projetos/):
+```sh
+ git clone https://github.com/renananchieta/nextjs-miniprojeto.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Criar o arquivo .env.local com o seguinte conteúdo com base na porta da api:
+```sh
+ NEXT_PUBLIC_API_URL=http://localhost:8888/api
+ API_URL=http://localhost:8888/api
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Instalar o projeto e seus pacotes, execute o comando:
+```sh
+ npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Após a instalação de todos os pacotes e sem nenhum erro, para iniciar o modo de desenvolvimento local, execute:
+```sh
+ npm run dev
+```
 
-## Learn More
+# CORRER O PROJETO COM DOCKER
+Para rodar o projeto com docker execute o seguinte comando:
+```sh
+ docker compose up -d
+```
 
-To learn more about Next.js, take a look at the following resources:
+1. Verificar o container que está rodando a aplicação front end:
+```sh
+ docker ps
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Você verá a seguinte tela:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+f450d45095c1   aula-nextjs      "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes   0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp   next-app
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Para acessar a aplicação:
+```sh
+ localhost:3000/
+```
