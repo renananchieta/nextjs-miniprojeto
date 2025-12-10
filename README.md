@@ -55,3 +55,9 @@ f450d45095c1   aula-nextjs      "docker-entrypoint.s…"   12 minutes ago   Up 1
 ```sh
  localhost:3000/
 ```
+
+3. Usuario de teste:
+```sh
+ Login: renananchieta
+ Senha: 'Teste1234#'
+```
